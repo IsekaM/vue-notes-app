@@ -1,0 +1,287 @@
+%icon-btn
+  background: transparent
+  border: none
+  cursor: pointer
+
+  svg path
+    fill: $color-grey
+
+  &:hover > svg path
+    fill: $color-black
+
+/*======================================================*/
+  /* Simple Resets */
+/*======================================================*/
+
+*
+  box-sizing: border-box
+  font-family: $base-font-family
+
+html
+  min-height: 100%
+
+body
+  padding: 0px
+  margin: 0px
+  font-size: $base-font-size
+  line-height: $base-line-height
+  background: $color-grey2
+  color: $color-black
+  overflow-x: hidden
+
+ul
+  margin: 0px
+  padding: 0px
+
+  li
+    list-style: none
+
+a
+  text-decoration: none
+  color: $color-grey
+
+input, textarea, select, button, [contenteditable="true"]
+  &:focus
+    outline: none
+
+/*======================================================*/
+  /* Header Styles */
+/*======================================================*/
+
+.header
+  +flex-row(true, center, true)
+  +position(fixed, (top: 0px), 100%)
+  padding: 36px 36px 0px 21px
+  align-items: center
+  z-index: 5
+
+.header__nav
+  +flex-row(true, center, true)
+
+  &-logo
+    margin-top: 4px
+
+  &-burger
+    display: inline-block
+    margin-right: 10px
+    padding: 13.5px 15px 12px
+    cursor: pointer
+    border-radius: 10px
+
+    &:hover
+      background: $color-yellow
+
+.header__search
+  +position(absolute, (left: 350px), )
+
+  &-input
+    height: 48px
+    width: 100%
+    min-width: 480px
+    padding-left: 48px
+    border-radius: 10px
+    border: none
+    box-shadow: 0px 2px 0px $color-grey3
+    background-color: $color-white
+    background-image: url(../vect/search.svg)
+    background-position: left 20px center
+    background-repeat: no-repeat
+
+.header__button
+  +position(absolute, (right: 36px))
+
+  &-add
+    height: 48px
+    border-radius: 10px
+
+    span:first-of-type
+      margin-right: 10px
+
+/*======================================================*/
+  /* Form Styles */
+/*======================================================*/
+
+.form
+  +position(fixed, (left: 0, top: 0), 100%, 0px)
+  +flex-row(center, center, true)
+  +trans(height, 200ms)
+  background: transparentize($color-black, 0.6)
+  z-index: 10
+  overflow: hidden
+
+  &.show
+    height: 100%
+
+  [contenteditable="true"]:empty:not(:focus):before
+  content: attr(data-placeholder)
+
+  &__cont
+    background: $color-white
+    width: 100%
+    max-width: 600px
+    padding: 20px
+    border-radius: 10px
+
+  &__title
+    +flex-row(space-between, center, true)
+    background: $color-white
+    font-weight: $bold
+    padding-bottom: 20px
+
+  &__title-input
+    min-height: 20px
+    flex: 10 1 0
+
+  &__title-btn
+    +flex-row(flex-end, center, true)
+
+  &__body
+    width: 100%
+
+  &__body-input
+    min-height: 200px
+
+
+.form [contenteditable="true"]:empty:not(:focus):before
+  content: attr(data-placeholder)
+
+.form button[class^="form__btn--"]
+  +svg-icon-btn()
+  &.true svg path
+    fill: $color-black
+
+
+/*======================================================*/
+  /* Navbar Styles */
+/*======================================================*/
+
+.nav
+  +position(fixed, (top: 0px, left: 0px), 314px, 100%)
+  +flex-row(flex-start, space-between)
+  flex-direction: column
+  padding: 180px 36px 60px 0px
+  background: $color-white
+  border-top-right-radius: 20px
+  z-index: 2
+
+  &__cont
+    flex: 1 1 0
+
+  &__item-img
+    display: inline-block
+    margin-right: 15px
+
+  &__item-text
+    display: inline-block
+    transform: translateY(-2px)
+
+  &__item
+    +trans(all, 150ms)
+    font-size: map-get($heading-sizes, "h3")
+    font-weight: bold
+    color: $color-black
+    padding: 15px 0px 10px 36px
+    cursor: pointer
+
+    &:hover
+      border-radius: 0px 10px 10px 0px
+      background: $color-grey2
+
+    &.active
+      background: $color-yellow
+      border-radius: 0px 10px 10px 0px
+
+.nav .footer
+  font-weight: $regular
+  padding-left: 36px
+  font-size: 14px
+  color: $color-grey
+
+  a
+    text-decoration: underline
+
+  p
+    margin-bottom: 0px
+
+/*======================================================*/
+  /* Note Section Styles */
+/*======================================================*/
+
+.listSection
+  +position(absolute, (top: 120px, left: 314px), calc(100% - 314px))
+  position: absolute
+  padding: 60px 18px 36px 18px
+
+  &__main, &__archived, &__favs, &__trashed
+    display: none
+    padding-bottom: 24px
+
+    &.show-section
+      display: block
+
+  &__h2
+    font-weight: $regular
+    font-size: 14px
+    color: $color-grey
+    text-transform: uppercase
+    letter-spacing: .5px
+    padding-left: 18px
+    margin: 0px 0px 20px
+
+
+.favNotes, .mainNotes, .archivedNotes, .trashedNotes
+  +flex-row(true, true, wrap)
+
+  &.show-section
+    display: flex
+
+.listItem
+  padding: 0px 18px
+  width: calc(100% / 5)
+
+  +mQD(1600px)
+    width: calc(100% / 4)
+
+  +mQD(1366px)
+    width: calc(100% / 3)
+
+  +mQD(1132px)
+    width: calc(100% / 2)
+
+  +mQD(500px)
+
+  &__cont
+    position: relative
+    padding: 13px 20px 20px
+    border-radius: 10px
+    box-shadow: 0px 2px 0px $color-grey3
+    background: $color-white
+    margin-bottom: 36px
+
+  &__trash-btn
+    +position(absolute, (right: 20px, top: 15px))
+    +trans(all, 200ms)
+    padding: 0px
+    visibility: hidden
+    opacity: 0
+    +svg-icon-btn($color-grey, $color-red)
+    // @extend .btn:active
+
+  &__title
+    font-weight: $bold
+    margin-bottom: 15px
+    min-height: 3px
+    font-size: 16px
+
+  &__body
+    font-size: 14px
+
+  &__title, &__body
+    white-space: pre-wrap
+    word-wrap: break-word
+    overflow-wrap: break-word
+
+  &:hover > &__cont &__trash-btn
+    visibility: visible
+    opacity: 1
+
