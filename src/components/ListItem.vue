@@ -1,7 +1,7 @@
 <template>
 	<li class="listItem">
 		<div class="listItem__cont">
-			<button class="listItem__trash-btn">
+			<button class="listItem__trash-btn" @click="$emit('delete-note')">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="15.75"

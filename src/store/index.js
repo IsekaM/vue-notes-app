@@ -63,7 +63,14 @@ export default new Vuex.Store({
 			});
 		}
 	},
-	mutations: {},
-	actions: {},
+	mutations: {
+		REMOVE_NOTE: (state, note) => {
+			const index = state.notes.findIndex(single => single.id === note);
+			state.notes.splice(index, 1);
+		}
+	},
+	actions: {
+		removeNote: (context, note) => context.commit("REMOVE_NOTE", note)
+	},
 	modules: {}
 });

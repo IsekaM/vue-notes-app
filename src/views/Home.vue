@@ -8,6 +8,7 @@
 					:key="note.id"
 					:body="note.body"
 					:title="note.title"
+					@delete-note="removeNotes(note.id)"
 				/>
 			</ul>
 		</section>
@@ -20,6 +21,7 @@
 					:key="note.id"
 					:body="note.body"
 					:title="note.title"
+					@delete-note="removeNotes(note.id)"
 				/>
 			</ul>
 		</section>
@@ -28,7 +30,7 @@
 
 <script>
 import ListItem from "../components/ListItem";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
 	name: "home",
@@ -37,9 +39,11 @@ export default {
 		...mapGetters(["getOtherNotes", "getFavNotes"])
 	},
 
-	created() {
-		console.log(this.getOtherNotes);
-		console.log([...this.getFavNotes]);
+	methods: {
+		...mapActions(["removeNote"]),
+		removeNotes(note) {
+			this.removeNote(note);
+		}
 	}
 };
 </script>
