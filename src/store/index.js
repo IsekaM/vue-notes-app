@@ -45,6 +45,14 @@ export default new Vuex.Store({
         favourite: true,
         trashed: false,
         archived: false
+      },
+      {
+        id: 6,
+        title: "I don't know why I feel this way",
+        body: "I'm hurt but my mind won't let me talk about it",
+        favourite: false,
+        trashed: false,
+        archived: true
       }
     ]
   },
